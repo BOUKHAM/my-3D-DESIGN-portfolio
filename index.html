@@ -49,11 +49,16 @@
       padding: 0 20px;
     }
 
+    .gallery-item {
+      position: relative;
+    }
+
     .gallery img {
       width: 100%;
       height: auto;
       border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -62,68 +67,133 @@
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
+    .edit-btn {
+      margin-top: 10px;
+      background-color: #ff7043;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     footer {
       background-color: #ffccbc;
       padding: 20px;
       font-size: 14px;
       color: #333;
     }
-  </style>
-</head>
-<body>
 
- <header>
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-   <img src="https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/commit/79263624ac710877072d18f1be39b6901b479909"  style="width: 40px; height: auto;">
-  <h1>معرض أعمالي</h1>
-    <p>أعمالي الفنية بالسنيما 4D والتصميم الرقمي</p>
-  </div>
-</header>
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
 
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      border-radius: 16px;
+    }
 
-  <section>
-    <h2>من أنا؟</h2>
-    <p>أنا فنان مهتم بالرسم، أُعبّر عن أفكاري من خلال التصميم تلاتي الابعاد أهلاً بك في عالمي الفني!</p>
-  </section>
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-  <section>
-    <h2>أعمالي</h2>
-    <div class="gallery">
-      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1">
-      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/4d3c1012ef68eedee6528ec852806c067b306fe6/Copy%20of%20art1.jpg.png text=رسم+1" alt="رسم 2">
-      <img src="https://drive.google.com/file/d/1jgF0s5o3njc34lZcZgXFfj74HWLwJghQ/view?usp=sharing/400x300?text=رسم+3" alt="رسم 3">
-      
-      <iframe src="https://www.youtube.com/embed/IUUulrXii5w" title="Maxon Cinema 4D | 2025 Demo Reel" allowfullscreen></iframe>
-
-  <footer>
-    
-    <p>للتواصل: anouarbokham@email.com | انستقرام: @anouarbokham</p>
-    
-  </footer>
-<!-- أضف هذا القسم داخل <body> في أي مكان تريده -->
-<div style="margin: 20px; text-align: center;">
-  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank" style="text-decoration: none; color: #4267B2; font-size: 18px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 32px; vertical-align: middle; margin-left: 8px;">
-    تابعني على فيسبوك
-  </a>
-</div>
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 315px;
+      margin: 20px auto;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>إعلان VFX</h1>
-    <p>استعرض قوة وإبداع المؤثرات البصرية في أحدث أعمالنا</p>
-  </header>
+<header>
+  <h1>معرض أعمالي</h1>
+  <p>أعمالي الفنية بالسنيما 4D والتصميم الرقمي</p>
+</header>
 
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/FN3DcHJc6xA" title="Learn VFX Advertising Using Blender and After Effects" allowfullscreen></iframe>
+<section>
+  <h2>من أنا؟</h2>
+  <p>أنا فنان مهتم بالرسم، أُعبّر عن أفكاري من خلال التصميم ثلاثي الأبعاد. أهلاً بك في عالمي الفني!</p>
+</section>
+
+<section>
+  <h2>أعمالي</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1" onclick="openModal(this)">
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
+    </div>
+    <div class="gallery-item">
+      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/4d3c1012ef68eedee6528ec852806c067b306fe6/Copy%20of%20art1.jpg.png" alt="رسم 2" onclick="openModal(this)">
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/400x300?text=رسم+3" alt="رسم 3" onclick="openModal(this)">
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
+    </div>
   </div>
+</section>
 
-  <footer>
-    <p>© 2025 جميع الحقوق محفوظة</p>
-  </footer>
+<iframe src="https://www.youtube.com/embed/IUUulrXii5w" title="Maxon Cinema 4D | 2025 Demo Reel" allowfullscreen></iframe>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<footer>
+  <p>للتواصل: anouarbokham@email.com | انستقرام: @anouarbokham</p>
+</footer>
+
+<div style="margin: 20px;">
+  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank" style="text-decoration: none; color: #4267B2; font-size: 18px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 32px; vertical-align: middle; margin-left: 8px;">
+    تابعني على فيسبوك
+  </a>
+</div>
+
+<script>
+  function openModal(img) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+
+  function editImage(button) {
+    const img = button.previousElementSibling;
+    const newSrc = prompt("أدخل رابط الصورة الجديد:", img.src);
+    if (newSrc) img.src = newSrc;
+  }
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
