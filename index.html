@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>معرض رسوماتي</title>
+  <meta name="description" content="معرض رقمي لأعمالي الفنية باستخدام Cinema 4D والتصميم ثلاثي الأبعاد.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -115,6 +117,35 @@
       cursor: pointer;
     }
 
+    #modalCaption {
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #downloadBtn {
+      display: block;
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+
+    /* Responsive Modal */
+    @media (max-width: 600px) {
+      .modal-content {
+        max-width: 95%;
+      }
+
+      .close {
+        right: 20px;
+        top: 20px;
+        font-size: 30px;
+      }
+    }
+
     iframe {
       width: 100%;
       max-width: 600px;
@@ -141,24 +172,34 @@
   <div class="gallery">
     <div class="gallery-item">
       <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1" onclick="openModal(this)">
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
     </div>
     <div class="gallery-item">
       <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/4d3c1012ef68eedee6528ec852806c067b306fe6/Copy%20of%20art1.jpg.png" alt="رسم 2" onclick="openModal(this)">
-      
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
     </div>
     <div class="gallery-item">
       <img src="https://via.placeholder.com/400x300?text=رسم+3" alt="رسم 3" onclick="openModal(this)">
-      
+      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
     </div>
   </div>
 </section>
 
-<iframe src="https://www.youtube.com/embed/IUUulrXii5w" title="Maxon Cinema 4D | 2025 Demo Reel" allowfullscreen></iframe>
+<div style="text-align: center;">
+  <h2>استعرض أعمالي بالفيديو</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+    <iframe src="https://www.youtube.com/embed/IUUulrXii5w" frameborder="0" allowfullscreen 
+            style="position: absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</div>
 
 <!-- Modal -->
 <div id="imageModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
   <img class="modal-content" id="modalImage">
+  <p id="modalCaption"></p>
+  <a id="downloadBtn" download target="_blank">تحميل الصورة</a>
 </div>
 
 <footer>
@@ -176,8 +217,13 @@
   function openModal(img) {
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("modalImage");
+    var caption = document.getElementById("modalCaption");
+    var downloadBtn = document.getElementById("downloadBtn");
+
     modal.style.display = "block";
     modalImg.src = img.src;
+    caption.textContent = img.alt;
+    downloadBtn.href = img.src;
   }
 
   function closeModal() {
@@ -190,9 +236,6 @@
     if (newSrc) img.src = newSrc;
   }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
