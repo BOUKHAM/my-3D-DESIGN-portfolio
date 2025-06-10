@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>معرض رسوماتي</title>
+  <title>معرض أعمالي الفنية</title>
   <meta name="description" content="معرض رقمي لأعمالي الفنية باستخدام Cinema 4D والتصميم ثلاثي الأبعاد.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png">
+  <meta property="og:image" content="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,93 +18,70 @@
     }
 
     header {
-      background-color: #ff7043;
+      background: url('https://via.placeholder.com/1200x400?text=Header+Image') center/cover no-repeat;
       color: white;
-      padding: 25px 0;
+      padding: 50px 0;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.5em;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2em;
+      font-size: 2.8em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
     }
 
     section {
-      padding: 40px 20px;
-    }
-
-    section h2 {
-      font-size: 2em;
-      color: #e65100;
-      margin-bottom: 20px;
+      padding: 60px 20px;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 25px;
       padding: 0 20px;
     }
 
     .gallery-item {
       position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
     .gallery img {
       width: 100%;
       height: auto;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
-
-    .edit-btn {
-      margin-top: 10px;
-      background-color: #ff7043;
-      border: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    footer {
-      background-color: #ffccbc;
-      padding: 20px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
       z-index: 9999;
-      padding-top: 60px;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+      padding-top: 60px;
     }
 
     .modal-content {
-      margin: auto;
-      display: block;
       max-width: 80%;
-      border-radius: 16px;
+      border-radius: 12px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .modal-content:hover {
+      transform: scale(1.03);
     }
 
     .close {
@@ -117,123 +94,83 @@
       cursor: pointer;
     }
 
-    #modalCaption {
-      color: white;
-      text-align: center;
+    footer {
+      background: #ffccbc;
+      padding: 20px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      margin: 10px;
       font-size: 18px;
-      margin-top: 10px;
     }
 
-    #downloadBtn {
-      display: block;
-      color: white;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 16px;
-      text-decoration: underline;
-    }
-
-    /* Responsive Modal */
     @media (max-width: 600px) {
       .modal-content {
         max-width: 95%;
       }
-
       .close {
         right: 20px;
         top: 20px;
         font-size: 30px;
       }
     }
-
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 315px;
-      margin: 20px auto;
-      display: block;
-    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>معرض أعمالي</h1>
-  <p>أعمالي الفنية بالسنيما 4D والتصميم الرقمي</p>
+  <h1>معرض أعمالي الفنية</h1>
+  <p>تصاميمي باستخدام Cinema 4D والتصميم ثلاثي الأبعاد</p>
 </header>
 
 <section>
   <h2>من أنا؟</h2>
-  <p>أنا فنان مهتم بالرسم، أُعبّر عن أفكاري من خلال التصميم ثلاثي الأبعاد. أهلاً بك في عالمي الفني!</p>
+  <p>أنا فنان رقمي مهتم بالإبداع البصري ثلاثي الأبعاد، أهلاً بك في عالمي الفني!</p>
 </section>
 
 <section>
   <h2>أعمالي</h2>
   <div class="gallery">
     <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/refs/heads/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1" onclick="openModal(this)">
-      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
+      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1" onclick="openModal(this)">
     </div>
     <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/4d3c1012ef68eedee6528ec852806c067b306fe6/Copy%20of%20art1.jpg.png" alt="رسم 2" onclick="openModal(this)">
-      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
+      <img src="https://via.placeholder.com/400x300?text=رسم+2" alt="رسم 2" onclick="openModal(this)">
     </div>
     <div class="gallery-item">
       <img src="https://via.placeholder.com/400x300?text=رسم+3" alt="رسم 3" onclick="openModal(this)">
-      <button class="edit-btn" onclick="editImage(this)">تعديل الصورة</button>
     </div>
   </div>
 </section>
-
-<div style="text-align: center;">
-  <h2>استعرض أعمالي بالفيديو</h2>
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-    <iframe src="https://www.youtube.com/embed/IUUulrXii5w" frameborder="0" allowfullscreen 
-            style="position: absolute; top:0; left:0; width:100%; height:100%;">
-    </iframe>
-  </div>
-</div>
 
 <!-- Modal -->
 <div id="imageModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
   <img class="modal-content" id="modalImage">
-  <p id="modalCaption"></p>
-  <a id="downloadBtn" download target="_blank">تحميل الصورة</a>
 </div>
 
 <footer>
   <p>للتواصل: anouarbokham@email.com | انستقرام: @anouarbokham</p>
 </footer>
 
-<div style="margin: 20px;">
-  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank" style="text-decoration: none; color: #4267B2; font-size: 18px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 32px; vertical-align: middle; margin-left: 8px;">
-    تابعني على فيسبوك
-  </a>
+<div class="social-links">
+  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank">تابعني على فيسبوك</a>
 </div>
 
 <script>
   function openModal(img) {
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("modalImage");
-    var caption = document.getElementById("modalCaption");
-    var downloadBtn = document.getElementById("downloadBtn");
 
     modal.style.display = "block";
     modalImg.src = img.src;
-    caption.textContent = img.alt;
-    downloadBtn.href = img.src;
   }
 
   function closeModal() {
     document.getElementById("imageModal").style.display = "none";
-  }
-
-  function editImage(button) {
-    const img = button.previousElementSibling;
-    const newSrc = prompt("أدخل رابط الصورة الجديد:", img.src);
-    if (newSrc) img.src = newSrc;
   }
 </script>
 
