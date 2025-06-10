@@ -5,29 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>معرض أعمالي الفنية</title>
   <meta name="description" content="معرض رقمي لأعمالي الفنية باستخدام Cinema 4D والتصميم ثلاثي الأبعاد.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to right, #fff3e0, #ffe0b2);
+      background-color: #ffffff;
       margin: 0;
       padding: 0;
       text-align: center;
-      color: #332;
+      color: #333;
     }
 
     header {
-      background: url('https://via.placeholder.com/1200x400?text=Header+Image') center/cover no-repeat;
-      color: white;
-      padding: 50px 0;
+      background-color: #f5f5f5;
+      color: #222;
+      padding: 40px 0;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.8em;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      font-size: 2.5em;
     }
 
     section {
@@ -36,87 +34,63 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       padding: 0 20px;
     }
 
     .gallery-item {
       position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
     .gallery img {
       width: 100%;
       height: auto;
       border-radius: 12px;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.8);
-      text-align: center;
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      max-width: 80%;
-      border-radius: 12px;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .modal-content:hover {
-      transform: scale(1.03);
-    }
-
-    .close {
-      position: absolute;
-      top: 30px;
-      right: 50px;
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
     }
 
     footer {
-      background: #ffccbc;
+      background-color: #f5f5f5;
       padding: 20px;
       font-size: 14px;
       color: #333;
     }
 
-    .social-links a {
-      text-decoration: none;
-      margin: 10px;
-      font-size: 18px;
+    .social-links {
+      margin-top: 20px;
     }
 
-    @media (max-width: 600px) {
-      .modal-content {
-        max-width: 95%;
-      }
-      .close {
-        right: 20px;
-        top: 20px;
-        font-size: 30px;
-      }
+    .social-links a {
+      text-decoration: none;
+      font-size: 18px;
+      margin: 10px;
+      color: #007bff;
     }
+
   </style>
 </head>
 <body>
@@ -127,52 +101,35 @@
 </header>
 
 <section>
-  <h2>من أنا؟</h2>
-  <p>أنا فنان رقمي مهتم بالإبداع البصري ثلاثي الأبعاد، أهلاً بك في عالمي الفني!</p>
-</section>
-
-<section>
   <h2>أعمالي</h2>
   <div class="gallery">
     <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1" onclick="openModal(this)">
+      <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="رسم 1">
     </div>
     <div class="gallery-item">
-      <img src="https://via.placeholder.com/400x300?text=رسم+2" alt="رسم 2" onclick="openModal(this)">
+      <img src="https://via.placeholder.com/400x300?text=رسم+2" alt="رسم 2">
     </div>
     <div class="gallery-item">
-      <img src="https://via.placeholder.com/400x300?text=رسم+3" alt="رسم 3" onclick="openModal(this)">
+      <img src="https://via.placeholder.com/400x300?text=رسم+3" alt="رسم 3">
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/400x300?text=رسم+4" alt="رسم 4">
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/400x300?text=رسم+5" alt="رسم 5">
     </div>
   </div>
 </section>
 
-<!-- Modal -->
-<div id="imageModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="modalImage">
-</div>
+<section class="social-links">
+  <h2>تابعني على:</h2>
+  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank" class="btn">فيسبوك</a>
+  <a href="https://www.instagram.com/anouarbokham" target="_blank" class="btn">انستقرام</a>
+</section>
 
 <footer>
-  <p>للتواصل: anouarbokham@email.com | انستقرام: @anouarbokham</p>
+  <p>للتواصل: anouarbokham@email.com</p>
 </footer>
-
-<div class="social-links">
-  <a href="https://www.facebook.com/Anouar_Boukham" target="_blank">تابعني على فيسبوك</a>
-</div>
-
-<script>
-  function openModal(img) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-
-    modal.style.display = "block";
-    modalImg.src = img.src;
-  }
-
-  function closeModal() {
-    document.getElementById("imageModal").style.display = "none";
-  }
-</script>
 
 </body>
 </html>
