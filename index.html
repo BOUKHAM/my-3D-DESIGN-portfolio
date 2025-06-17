@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الأعمال</title>
+    <title>الصفحة الرئيسية | معرض أعمالي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
 </head>
-<body id="gallery-page"> <header>
+<body>
+
+    <header>
         <nav class="navbar">
             <a href="index.html" class="nav-brand">معرض أعمالي</a>
             <ul class="nav-links">
@@ -19,14 +21,38 @@
     </header>
 
     <main>
-        <section class="container gallery-page">
-            <h2 id="gallery-title" class="section-title"></h2>
-            <div class="gallery-grid"></div>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>فن يتجاوز الخيال</h1>
+                <p>استكشف عوالم من الإبداع في التصميم ثلاثي الأبعاد، أعمال CNC، والتصميم الجرافيكي.</p>
+                <a href="#footer" class="btn-primary">تواصل معي</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">أقسام أعمالي</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>أعمال 3D</h3>
+                    <p>من النمذجة المعمارية إلى تصميم المنتجات، تجسيد الأفكار في أبعاد ثلاثة.</p>
+                    <a href="gallery_3d.html">استعراض الأعمال</a>
+                </div>
+                <div class="feature-card">
+                    <h3>أعمال CNC</h3>
+                    <p>دقة الآلة تلتقي بالإبداع الفني لإنتاج قطع فريدة ومتقنة.</p>
+                    <a href="gallery_cnc.html">استعراض الأعمال</a>
+                </div>
+                <div class="feature-card">
+                    <h3>تصميم جرافيك</h3>
+                    <p>هويات بصرية، شعارات، وإعلانات تعبر عن علامتك التجارية بوضوح.</p>
+                    <a href="gallery_graphic.html">استعراض الأعمال</a>
+                </div>
+            </div>
         </section>
     </main>
-    
+
     <footer id="footer">
-         <div class="container">
+        <div class="container">
             <h3>انضم إلى قائمتنا البريدية</h3>
             <p>احصل على آخر التحديثات وأحدث الأعمال مباشرة على بريدك الإلكتروني.</p>
             <form id="subscribe-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
@@ -38,13 +64,12 @@
             &copy; 2025 جميع الحقوق محفوظة.
         </div>
     </footer>
-
+    
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
     </div>
 
     <script src="static/js/script.js"></script>
-
 </body>
 </html>
