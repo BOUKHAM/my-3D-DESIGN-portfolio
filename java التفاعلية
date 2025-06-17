@@ -1,1 +1,95 @@
+document.addEventListener('DOMContentLoaded', () => {
 
+    // --- بيانات الصور ---
+    // تم نقل البيانات من بايثون إلى هنا
+    const GALLERY_DATA = {
+        "3d": {
+            title: "أعمال 3D",
+            images: [
+                { "url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/U4.png?raw=true", "caption": "تصميم داخلي حديث" },
+                { "url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/DSRRF.jpg?raw=true", "caption": "تصميم معماري" },
+                { "url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/XCFG.png?raw=true", "caption": "نموذج سيارة" }
+            ]
+        },
+        "cnc": {
+            title: "أعمال CNC",
+            images: [
+                { "url": "https://i.pinimg.com/564x/8a/b7/82/8ab782878e471d87f7170f61434ac2c5.jpg", "caption": "نقش خشبي CNC" },
+                { "url": "https://i.pinimg.com/564x/11/d2/87/11d2874136427513768411b585a25178.jpg", "caption": "قطعة فنية" },
+                { "url": "https://i.pinimg.com/564x/0f/f8/a6/0ff8a602283e5387d27e9f36f6d6c8e9.jpg", "caption": "تصميم أثاث" }
+            ]
+        },
+        "graphic": {
+            title: "تصميم جرافيك",
+            images: [
+                { "url": "https://i.pinimg.com/564x/d5/3d/8c/d53d8c1c3f685c4014902a7b889c0957.jpg", "caption": "هوية بصرية" },
+                { "url": "https://i.pinimg.com/564x/f0/26/65/f026650a3b33454a85623b3b274e0ce7.jpg", "caption": "تصميم شعار" },
+                { "url": "https://i.pinimg.com/564x/a4/6a/98/a46a983b6a73d328212136e0a_38be9a.jpg", "caption": "ملصق إعلاني" }
+            ]
+        }
+    };
+
+    // --- بناء معرض الصور الديناميكي ---
+    const buildGallery = () => {
+        // تحقق إذا كنا في صفحة معرض
+        if (document.body.id !== 'gallery-page') return;
+
+        const galleryGrid = document.querySelector('.gallery-grid');
+        const pageTitleEl = document.getElementById('gallery-title');
+        const docTitleEl = document.querySelector('title');
+        
+        // حدد نوع المعرض من اسم الملف في الرابط
+        const path = window.location.pathname;
+        let galleryType = '';
+        if (path.includes('gallery_3d')) galleryType = '3d';
+        else if (path.includes('gallery_cnc')) galleryType = 'cnc';
+        else if (path.includes('gallery_graphic')) galleryType = 'graphic';
+
+        if (galleryType && GALLERY_DATA[galleryType]) {
+            const data = GALLERY_DATA[galleryType];
+            // تحديث عنوان الصفحة وعنوان المستند
+            pageTitleEl.textContent = data.title;
+            docTitleEl.textContent = `${data.title} | معرض أعمالي`;
+
+            // ملء الصور
+            data.images.forEach(image => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${image.url}" alt="${image.caption}">`;
+                galleryGrid.appendChild(item);
+            });
+            
+            // بعد بناء المعرض، قم بتفعيل وظيفة تكبير الصور
+            activateLightbox();
+        }
+    };
+
+    // --- وظيفة تكبير الصور (Lightbox) ---
+    const activateLightbox = () => {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.style.display = 'none';
+        };
+
+        if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if(lightbox) lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    };
+    
+    // تشغيل بناء المعرض عند تحميل الصفحة
+    buildGallery();
+});
