@@ -1,0 +1,81 @@
+import csv
+from flask import Flask, render_template, request, jsonify
+from datetime import datetime
+
+# تهيئة تطبيق فلاسك
+app = Flask(__name__)
+
+# قائمة وهمية للصور لكل قسم
+# في تطبيق حقيقي، قد تأتي هذه البيانات من قاعدة بيانات
+GALLERY_DATA = {
+    "3d": [
+        {"url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/U4.png?raw=true", "caption": "تصميم داخلي حديث"},
+        {"url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/DSRRF.jpg?raw=true", "caption": "تصميم معماري"},
+        {"url": "https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/XCFG.png?raw=true", "caption": "نموذج سيارة"}
+    ],
+    "cnc": [
+        {"url": "https://i.pinimg.com/564x/8a/b7/82/8ab782878e471d87f7170f61434ac2c5.jpg", "caption": "نقش خشبي CNC"},
+        {"url": "https://i.pinimg.com/564x/11/d2/87/11d2874136427513768411b585a25178.jpg", "caption": "قطعة فنية"},
+        {"url": "https://i.pinimg.com/564x/0f/f8/a6/0ff8a602283e5387d27e9f36f6d6c8e9.jpg", "caption": "تصميم أثاث"}
+    ],
+    "graphic": [
+        {"url": "https://i.pinimg.com/564x/d5/3d/8c/d53d8c1c3f685c4014902a7b889c0957.jpg", "caption": "هوية بصرية"},
+        {"url": "https://i.pinimg.com/564x/f0/26/65/f026650a3b33454a85623b3b274e0ce7.jpg", "caption": "تصميم شعار"},
+        {"url": "https://i.pinimg.com/564x/a4/6a/98/a46a983b63a73d328212136e0a38be9a.jpg", "caption": "ملصق إعلاني"}
+    ]
+}
+
+
+# --- تعريف مسارات الصفحات (Routes) ---
+
+@app.route('/')
+def home():
+    """يعرض الصفحة الرئيسية"""
+    return render_template('index.html')
+
+@app.route('/3d-gallery')
+def gallery_3d():
+    """يعرض صفحة أعمال الـ 3D"""
+    return render_template('gallery_3d.html', images=GALLERY_DATA['3d'], title="أعمال 3D")
+
+@app.route('/cnc-gallery')
+def gallery_cnc():
+    """يعرض صفحة أعمال الـ CNC"""
+    return render_template('gallery_cnc.html', images=GALLERY_DATA['cnc'], title="أعمال CNC")
+
+@app.route('/graphic-gallery')
+def gallery_graphic():
+    """يعرض صفحة أعمال التصميم الجرافيكي"""
+    return render_template('gallery_graphic.html', images=GALLERY_DATA['graphic'], title="تصميم جرافيك")
+
+# --- تعريف مسار تسجيل البريد الإلكتروني ---
+
+@app.route('/subscribe', methods=['POST'])
+def subscribe():
+    """يستقبل طلب تسجيل البريد الإلكتروني ويحفظه"""
+    # احصل على البريد الإلكتروني من الطلب
+    email = request.json.get('email')
+
+    if not email:
+        return jsonify({'success': False, 'message': 'البريد الإلكتروني مطلوب.'}), 400
+
+    try:
+        # افتح ملف CSV في وضع الإضافة (append)
+        with open('subscriptions.csv', 'a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            # احصل على الوقت الحالي
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # اكتب البريد الإلكتروني والوقت في الملف
+            writer.writerow([email, timestamp])
+        
+        # أرسل ردًا ناجحًا
+        return jsonify({'success': True, 'message': 'شكرًا لك، تم تسجيل بريدك الإلكتروني بنجاح!'})
+    except Exception as e:
+        # في حالة حدوث خطأ، أرسل رسالة خطأ
+        print(f"Error: {e}")
+        return jsonify({'success': False, 'message': 'حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.'}), 500
+
+
+# --- تشغيل التطبيق ---
+if __name__ == '__main__':
+    app.run(debug=True)
