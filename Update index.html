@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الأعمال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body id="gallery-page"> <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-brand">معرض أعمالي</a>
+            <ul class="nav-links">
+                <li><a href="gallery_3d.html">أعمال 3D</a></li>
+                <li><a href="gallery_cnc.html">أعمال CNC</a></li>
+                <li><a href="gallery_graphic.html">تصميم جرافيك</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container gallery-page">
+            <h2 id="gallery-title" class="section-title"></h2>
+            <div class="gallery-grid"></div>
+        </section>
+    </main>
+    
+    <footer id="footer">
+         <div class="container">
+            <h3>انضم إلى قائمتنا البريدية</h3>
+            <p>احصل على آخر التحديثات وأحدث الأعمال مباشرة على بريدك الإلكتروني.</p>
+            <form id="subscribe-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                <input type="email" name="email" placeholder="ادخل بريدك الإلكتروني" required>
+                <button type="submit">تسجيل</button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="static/js/script.js"></script>
+
+</body>
+</html>
