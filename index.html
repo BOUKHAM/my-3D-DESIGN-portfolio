@@ -3,87 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أنور بوخم | معرض أعمال التصميم ثلاثي الأبعاد</title>
-    <meta name="description" content="استكشف مجموعة من أعمالي الفنية في مجال التصميم ثلاثي الأبعاد والنمذجة باستخدام Cinema 4D.">
-    <meta name="author" content="أنور بوخم">
-    
+    <title>{% block title %}معرض أعمالي{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">فن التصميم ثلاثي الأبعاد</h1>
-            <p class="fade-in-delay">معرض أعمال أنور بوخم باستخدام Cinema 4D</p>
-        </div>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-brand">معرض أعمالي</a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('gallery_3d') }}">أعمال 3D</a></li>
+                <li><a href="{{ url_for('gallery_cnc') }}">أعمال CNC</a></li>
+                <li><a href="{{ url_for('gallery_graphic') }}">تصميم جرافيك</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section id="about" class="container reveal">
-            <h2>نبذة عني</h2>
-            <p>أنا أنور بوخم، مصمم شغوف بالتصميم ثلاثي الأبعاد. أستخدم برامج مثل Cinema 4D لتحويل الأفكار إلى واقع بصري ملموس، سواء كان ذلك في التصميم المعماري، الداخلي، أو النماذج التجريبية.</p>
-        </section>
-
-        <section id="gallery" class="container reveal">
-            <h2>أعمالي المميزة</h2>
-            <div class="gallery">
-                <figure class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/BOUKHAM/my-3D-DESIGN-portfolio/main/482565-J31dY-1539980449-exhibition-stand_render_netstream.png" alt="
-       
-                   
-                </figure>
-                <figure class="gallery-item">
-                    <img src="https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/U4.png?raw=true" alt="width="300" 
-         height="300"
-                  
-                </figure>
-                <figure class="gallery-item">
-                    <img src="https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/DSRRF.jpg?raw=true" alt="width="300" 
-         height="300"
-                    
-                </figure>
-                <figure class="gallery-item">
-                    <img src="https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/OI0000.png?raw=true" alt=" alt="تصميم جناح معرض" 
-         width="300" 
-         height="300"
-                    
-                </figure>
-                <figure class="gallery-item">
-                    <img src="https://github.com/BOUKHAM/my-3D-DESIGN-portfolio/blob/main/XCFG.png?raw=true" alt=
-         width="300" 
-         height="300"
-                     alt=
-                    <figcaption>تصميم منتج</figcaption>
-                </figure>
-                 </div>
-        </section>
-
-        <section id="contact" class="container reveal">
-            <h2>تواصل معي</h2>
-            <p>هل لديك فكرة مشروع أو ترغب في التعاون؟ لا تتردد في التواصل معي.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/Anouar_Boukham" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/anouarbokham" target="_blank" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:anouarbokham@email.com" aria-label="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-            </div>
-        </section>
+        {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2024 جميع الحقوق محفوظة | أنور بوخم</p>
+    <footer id="footer">
+        <div class="container">
+            <h3>انضم إلى قائمتنا البريدية</h3>
+            <p>احصل على آخر التحديثات وأحدث الأعمال مباشرة على بريدك الإلكتروني.</p>
+            <form id="subscribe-form">
+                <input type="email" id="email-input" placeholder="ادخل بريدك الإلكتروني" required>
+                <button type="submit">تسجيل</button>
+            </form>
+            <p id="form-message"></p>
+        </div>
+        <div class="footer-bottom">
+            &copy; {{ "now"|date("Y") }} جميع الحقوق محفوظة.
+        </div>
     </footer>
 
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>
-
