@@ -95,7 +95,8 @@ section h2::after {
 /* Gallery Styles */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* استخدمنا minmax لتكون الأعمدة أكثر مرونة */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
@@ -115,9 +116,13 @@ section h2::after {
 
 .gallery-item img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
     display: block;
+    object-fit: cover; /* تضمن أن الصورة تملأ المساحة دون تشويه */
+    
+    /* --- التحسين الأساسي هنا --- */
+    /* لقد أزلنا الارتفاع الثابت وأضفنا نسبة العرض إلى الارتفاع */
+    /* height: 220px; */ /* <-- تم حذف هذا السطر */
+    aspect-ratio: 4 / 3; /* <-- هذا هو السطر الجديد. يحافظ على نسبة 4:3 للصورة */
 }
 
 .gallery-item figcaption {
@@ -229,7 +234,8 @@ footer {
     section h2 {
         font-size: 2em;
     }
-    .gallery {
-        grid-template-columns: 1fr;
-    }
+    /* على الشاشات الأصغر، لا نحتاج لتغيير شيء في الجاليري لأن 
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       سيقوم تلقائيًا بتحويله إلى عمود واحد عند الحاجة.
+    */
 }
