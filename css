@@ -96,7 +96,7 @@ section h2::after {
 .gallery {
     display: grid;
     /* استخدمنا minmax لتكون الأعمدة أكثر مرونة */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 30px;
 }
 
@@ -122,7 +122,7 @@ section h2::after {
     /* --- التحسين الأساسي هنا --- */
     /* لقد أزلنا الارتفاع الثابت وأضفنا نسبة العرض إلى الارتفاع */
     /* height: 220px; */ /* <-- تم حذف هذا السطر */
-    aspect-ratio: 1 / 1; /* <-- هذا هو السطر الجديد. يحافظ على نسبة 4:3 للصورة */
+    aspect-ratio: 3 / 3; /* <-- هذا هو السطر الجديد. يحافظ على نسبة 4:3 للصورة */
 }
 
 .gallery-item figcaption {
