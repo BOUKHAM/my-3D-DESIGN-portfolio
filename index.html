@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}معرض أعمالي{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-brand">معرض أعمالي</a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('gallery_3d') }}">أعمال 3D</a></li>
+                <li><a href="{{ url_for('gallery_cnc') }}">أعمال CNC</a></li>
+                <li><a href="{{ url_for('gallery_graphic') }}">تصميم جرافيك</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <h3>انضم إلى قائمتنا البريدية</h3>
+            <p>احصل على آخر التحديثات وأحدث الأعمال مباشرة على بريدك الإلكتروني.</p>
+            <form id="subscribe-form">
+                <input type="email" id="email-input" placeholder="ادخل بريدك الإلكتروني" required>
+                <button type="submit">تسجيل</button>
+            </form>
+            <p id="form-message"></p>
+        </div>
+        <div class="footer-bottom">
+            &copy; {{ "now"|date("Y") }} جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
