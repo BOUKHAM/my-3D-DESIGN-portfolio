@@ -48,3 +48,37 @@
 
 </body>
 </html>
+{% extends "layout.html" %}
+
+{% block title %}الصفحة الرئيسية | معرض أعمالي{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>فن يتجاوز الخيال</h1>
+        <p>استكشف عوالم من الإبداع في التصميم ثلاثي الأبعاد، أعمال CNC، والتصميم الجرافيكي.</p>
+        <a href="#footer" class="btn-primary">تواصل معي</a>
+    </div>
+</section>
+
+<section class="container">
+    <h2 class="section-title">أقسام أعمالي</h2>
+    <div class="features">
+        <div class="feature-card">
+            <h3>أعمال 3D</h3>
+            <p>من النمذجة المعمارية إلى تصميم المنتجات، تجسيد الأفكار في أبعاد ثلاثة.</p>
+            <a href="{{ url_for('gallery_3d') }}">استعراض الأعمال</a>
+        </div>
+        <div class="feature-card">
+            <h3>أعمال CNC</h3>
+            <p>دقة الآلة تلتقي بالإبداع الفني لإنتاج قطع فريدة ومتقنة.</p>
+            <a href="{{ url_for('gallery_cnc') }}">استعراض الأعمال</a>
+        </div>
+        <div class="feature-card">
+            <h3>تصميم جرافيك</h3>
+            <p>هويات بصرية، شعارات، وإعلانات تعبر عن علامتك التجارية بوضوح.</p>
+            <a href="{{ url_for('gallery_graphic') }}">استعراض الأعمال</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
